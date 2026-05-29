@@ -1,133 +1,494 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>My Food Blog</title>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Foodie Store</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
-body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
-.w3-bar-block .w3-bar-item {padding:20px}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f8fafc;
+}
+
+/* NAVBAR */
+
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    background:white;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 8%;
+    box-shadow:0 2px 20px rgba(0,0,0,.08);
+    z-index:1000;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:700;
+    color:#ff6b35;
+}
+
+.nav-links{
+    display:flex;
+    gap:30px;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:#333;
+    font-weight:500;
+}
+
+.icons{
+    display:flex;
+    gap:20px;
+    font-size:22px;
+    cursor:pointer;
+}
+
+/* HERO */
+
+.hero{
+    height:100vh;
+    background:
+    linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),
+    url('https://images.unsplash.com/photo-1504674900247-0877df9cc836');
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    color:white;
+}
+
+.hero-content h1{
+    font-size:4rem;
+    margin-bottom:15px;
+}
+
+.hero-content p{
+    font-size:1.2rem;
+    margin-bottom:25px;
+}
+
+.hero-content button{
+    padding:15px 40px;
+    border:none;
+    background:#ff6b35;
+    color:white;
+    border-radius:50px;
+    font-size:18px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.hero-content button:hover{
+    transform:translateY(-3px);
+}
+
+/* SEARCH */
+
+.search-container{
+    width:90%;
+    max-width:800px;
+    margin:auto;
+    margin-top:-40px;
+    position:relative;
+}
+
+.search-box{
+    background:white;
+    padding:20px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+.search-box input{
+    width:100%;
+    border:none;
+    outline:none;
+    font-size:18px;
+}
+
+/* CATEGORY */
+
+.categories{
+    padding:60px 8%;
+}
+
+.section-title{
+    font-size:32px;
+    margin-bottom:25px;
+}
+
+.category-list{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.category{
+    padding:12px 24px;
+    border-radius:50px;
+    background:white;
+    box-shadow:0 4px 15px rgba(0,0,0,.08);
+    cursor:pointer;
+    transition:.3s;
+}
+
+.category:hover{
+    background:#ff6b35;
+    color:white;
+}
+
+/* PRODUCTS */
+
+.products{
+    padding:20px 8% 80px;
+}
+
+.product-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:30px;
+}
+
+.card{
+    background:white;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+}
+
+.card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+
+.card-content{
+    padding:20px;
+}
+
+.card-content h3{
+    margin-bottom:10px;
+}
+
+.rating{
+    color:#ffb400;
+    margin-bottom:10px;
+}
+
+.price{
+    font-size:22px;
+    font-weight:700;
+    color:#ff6b35;
+}
+
+.btn{
+    margin-top:15px;
+    width:100%;
+    padding:12px;
+    border:none;
+    background:#ff6b35;
+    color:white;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+/* STATS */
+
+.stats{
+    padding:80px 8%;
+    background:white;
+}
+
+.stats-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:30px;
+}
+
+.stat{
+    text-align:center;
+    padding:30px;
+}
+
+.stat h2{
+    color:#ff6b35;
+    font-size:40px;
+}
+
+/* TESTIMONIALS */
+
+.testimonials{
+    padding:80px 8%;
+}
+
+.testimonial-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:30px;
+}
+
+.review{
+    background:white;
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+/* FOOTER */
+
+footer{
+    background:#111827;
+    color:white;
+    padding:60px 8%;
+}
+
+.footer-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:30px;
+}
+
+.footer-grid h3{
+    margin-bottom:15px;
+}
+
+.footer-grid p{
+    margin-bottom:10px;
+    color:#d1d5db;
+}
+
+@media(max-width:768px){
+
+.hero-content h1{
+    font-size:2.5rem;
+}
+
+.nav-links{
+    display:none;
+}
+
+}
+
 </style>
 </head>
+
 <body>
 
-<!-- Sidebar (hidden by default) -->
-<nav class="w3-sidebar w3-bar-block w3-card w3-top w3-xlarge w3-animate-left" style="display:none;z-index:2;width:40%;min-width:300px" id="mySidebar">
-  <a href="javascript:void(0)" onclick="w3_close()"
-  class="w3-bar-item w3-button">Close Menu</a>
-  <a href="#food" onclick="w3_close()" class="w3-bar-item w3-button">Food</a>
-  <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button">About</a>
+<nav>
+
+<div class="logo">🍔 Foodie</div>
+
+<div class="nav-links">
+<a href="#">Home</a>
+<a href="#">Menu</a>
+<a href="#">Categories</a>
+<a href="#">About</a>
+<a href="#">Contact</a>
+</div>
+
+<div class="icons">
+🔍
+🛒
+👤
+</div>
+
 </nav>
 
-<!-- Top menu -->
-<div class="w3-top">
-  <div class="w3-white w3-xlarge" style="max-width:1200px;margin:auto">
-    <div class="w3-button w3-padding-16 w3-left" onclick="w3_open()">☰</div>
-    <div class="w3-right w3-padding-16">Mail</div>
-    <div class="w3-center w3-padding-16">My Food</div>
-  </div>
-</div>
-  
-<!-- !PAGE CONTENT! -->
-<div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:100px">
+<section class="hero">
 
-  <!-- First Photo Grid-->
-  <div class="w3-row-padding w3-padding-16 w3-center" id="food">
-    <div class="w3-quarter">
-      <img src="https://vaya.in/recipes/wp-content/uploads/2018/06/Club-sandwich.jpg" alt="Sandwich" style="width:100%">
-      <h3>The Perfect Sandwich, A Real NYC Classic</h3>
-    </div>
-    <div class="w3-quarter">
-      <img src="https://arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/53BGPNAB6YI63C7LFNHEQGYVAA.jpg" alt="Steak" style="width:100%">
-      <h3>Let Me Tell You About This Steak</h3>
-    </div>
-    <div class="w3-quarter">
-      <img src="https://blog.lexmed.com/images/librariesprovider80/blog-post-featured-images/shutterstock_1933299218.jpg?sfvrsn=4a8d900b_0" alt="Cherries" style="width:100%">
-      <h3>Cherries, interrupted</h3>
-      <p>What else?</p>
-    </div>
-    <div class="w3-quarter">
-      <img src="https://www.acouplecooks.com/wp-content/uploads/2023/01/Red-Sauce-Pasta-008.jpg" alt="Pasta and Wine" style="width:100%">
-      <h3>Once Again, Robust Wine and Vegetable Pasta</h3>
-    </div>
-  </div>
-  
-  <!-- Second Photo Grid-->
-  <div class="w3-row-padding w3-padding-16 w3-center">
-    <div class="w3-quarter">
-      <img src="https://feelgoodfoodie.net/wp-content/uploads/2022/04/How-to-Make-Popsicles-15.jpg" alt="Popsicle" style="width:100%">
-      <h3>All I Need Is a Popsicle</h3>
-    </div>
-    <div class="w3-quarter">
-      <img src="https://www.wholesomeyum.com/wp-content/uploads/2021/07/wholesomeyum-Pan-Seared-Salmon-12.jpg" alt="Salmon" style="width:100%">
-      <h3>Salmon For Your Skin</h3>
-    </div>
-    <div class="w3-quarter">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Desserts.jpg/640px-Desserts.jpg" alt="Sandwich" style="width:100%">
-      <h3>The Perfect Dessert</h3>
-    </div>
-    <div class="w3-quarter">
-      <img src="https://www.simplejoy.com/wp-content/uploads/2021/04/Croissant-French-Toast-5.jpg" alt="Croissant" style="width:100%">
-      <h3>Le French</h3>
-    </div>
-  </div>
-
-  <!-- Pagination -->
-  <div class="w3-center w3-padding-32">
-    <div class="w3-bar">
-      <a href="#" class="w3-bar-item w3-button w3-hover-black">«</a>
-      <a href="#" class="w3-bar-item w3-black w3-button">1</a>
-      <a href="#" class="w3-bar-item w3-button w3-hover-black">2</a>
-      <a href="#" class="w3-bar-item w3-button w3-hover-black">3</a>
-      <a href="#" class="w3-bar-item w3-button w3-hover-black">4</a>
-      <a href="#" class="w3-bar-item w3-button w3-hover-black">»</a>
-    </div>
-  </div>
-  
-  <hr id="about">
-
-  <!-- About Section -->
-  <div class="w3-container w3-padding-32 w3-center">  
-    <h3>About Me, The Food Man</h3><br>
-    <img src="https://www.cordonbleu.edu/Files/MediaFile/58300.jpg" alt="Me" class="w3-image" style="display:block;margin:auto" width="800" height="533">
-    <div class="w3-padding-32">
-      <h4><b>I am Who I Am!</b></h4>
-      <h6><i>With Passion For Real, Good Food</i></h6>
-      <p>Just me, myself and I, exploring the universe of unknownment. I have a heart of love and an interest on food blog. I want to share my world with you.</p>
-    </div>
-  </div>
-  <hr>
-  
-  <!-- Footer -->
-  <footer class="w3-row-padding w3-padding-32">
-
-    <div class="w3-third w3-serif">
-      <h3>POPULAR TAGS</h3>
-      <p>
-        <span class="w3-tag w3-black w3-margin-bottom">Travel</span> <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">New York</span> <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Dinner</span>
-        <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Salmon</span> <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">France</span> <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Drinks</span>
-        <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Ideas</span> <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Flavors</span> <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Cuisine</span>
-        <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Chicken</span> <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Dressing</span> <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Fried</span>
-        <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Fish</span> <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Duck</span>
-      </p>
-    </div>
-  </footer>
-
-<!-- End page content -->
+<div class="hero-content">
+<h1>Healthy Food Delivered Fresh</h1>
+<p>Fresh • Delicious • Nutritious</p>
+<button>Order Now</button>
 </div>
 
-<script>
-// Script to open and close sidebar
-function w3_open() {
-  document.getElementById("mySidebar").style.display = "block";
-}
- 
-function w3_close() {
-  document.getElementById("mySidebar").style.display = "none";
-}
-</script>
+</section>
+
+<div class="search-container">
+
+<div class="search-box">
+<input type="text" placeholder="Search your favorite food...">
+</div>
+
+</div>
+
+<section class="categories">
+
+<h2 class="section-title">Categories</h2>
+
+<div class="category-list">
+<div class="category">Breakfast</div>
+<div class="category">Lunch</div>
+<div class="category">Dinner</div>
+<div class="category">Desserts</div>
+<div class="category">Healthy</div>
+<div class="category">Drinks</div>
+</div>
+
+</section>
+
+<section class="products">
+
+<h2 class="section-title">Popular Foods</h2>
+
+<div class="product-grid">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1550547660-d9450f859349">
+<div class="card-content">
+<h3>Cheese Burger</h3>
+<div class="rating">⭐⭐⭐⭐⭐</div>
+<div class="price">₹249</div>
+<button class="btn">Add To Cart</button>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd">
+<div class="card-content">
+<h3>Healthy Salad</h3>
+<div class="rating">⭐⭐⭐⭐⭐</div>
+<div class="price">₹199</div>
+<button class="btn">Add To Cart</button>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b">
+<div class="card-content">
+<h3>Italian Pizza</h3>
+<div class="rating">⭐⭐⭐⭐⭐</div>
+<div class="price">₹399</div>
+<button class="btn">Add To Cart</button>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288">
+<div class="card-content">
+<h3>Grilled Steak</h3>
+<div class="rating">⭐⭐⭐⭐⭐</div>
+<div class="price">₹499</div>
+<button class="btn">Add To Cart</button>
+</div>
+</div>
+
+</div>
+
+</section>
+
+<section class="stats">
+
+<div class="stats-grid">
+
+<div class="stat">
+<h2>10K+</h2>
+<p>Customers</p>
+</div>
+
+<div class="stat">
+<h2>500+</h2>
+<p>Recipes</p>
+</div>
+
+<div class="stat">
+<h2>4.9★</h2>
+<p>Rating</p>
+</div>
+
+<div class="stat">
+<h2>24/7</h2>
+<p>Support</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="testimonials">
+
+<h2 class="section-title">Customer Reviews</h2>
+
+<div class="testimonial-grid">
+
+<div class="review">
+⭐⭐⭐⭐⭐
+<p>Amazing quality food and super fast delivery.</p>
+<b>Sarah</b>
+</div>
+
+<div class="review">
+⭐⭐⭐⭐⭐
+<p>Fresh ingredients and beautiful presentation.</p>
+<b>John</b>
+</div>
+
+<div class="review">
+⭐⭐⭐⭐⭐
+<p>Best healthy meal delivery service.</p>
+<b>Emily</b>
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+<div class="footer-grid">
+
+<div>
+<h3>Foodie</h3>
+<p>Fresh food delivered to your doorstep.</p>
+</div>
+
+<div>
+<h3>Company</h3>
+<p>About Us</p>
+<p>Careers</p>
+<p>Contact</p>
+</div>
+
+<div>
+<h3>Support</h3>
+<p>FAQ</p>
+<p>Help Center</p>
+<p>Terms</p>
+</div>
+
+<div>
+<h3>Follow Us</h3>
+<p>Instagram</p>
+<p>Facebook</p>
+<p>Twitter</p>
+</div>
+
+</div>
+
+</footer>
 
 </body>
 </html>
